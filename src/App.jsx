@@ -1,25 +1,25 @@
 /* eslint-disable react/jsx-key */
-import groceryimg from "./Assets/i3.png";
+import ToDoImage from "./Assets/pngwing.com.png";
 import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
   const [inputvalue, setinputvalue] = useState("");
-  const [groceryItems, setGroceryItems] = useState([]);
+  const [todoItem, settodoItem] = useState([]);
   const [isCompleted, setisCompleted] = useState(false);
 
   useEffect(() => {
     determinestatus();
-  }, [groceryItems]);
+  }, [todoItem]);
 
   const determinestatus = () => {
-    if (!groceryItems.length) {
+    if (!todoItem.length) {
       return setisCompleted(false);
     }
 
     let isallcompleted = true;
 
-    groceryItems.forEach((item) => {
+    todoItem.forEach((item) => {
       if (!item.completed) isallcompleted = false;
     });
     setisCompleted(isallcompleted);
@@ -28,10 +28,10 @@ function App() {
   const handlechangeinputvalue = (e) => {
     setinputvalue(e.target.value);
   };
-  const handleGroceryItems = (e) => {
+  const handletodoItem = (e) => {
     if (e.key === "Enter") {
       if (inputvalue) {
-        const updateItemlist = [...groceryItems];
+        const updateItemlist = [...todoItem];
 
         const itemindex = updateItemlist.findIndex(
           (item) => item.name === inputvalue
@@ -47,24 +47,24 @@ function App() {
           updateItemlist[itemindex].quantity++;
         }
 
-        setGroceryItems(updateItemlist);
+        settodoItem(updateItemlist);
         setinputvalue("");
       }
     }
   };
 
   const handledeleteitem = (name) => {
-    setGroceryItems([...groceryItems].filter((item) => item.name !== name));
+    settodoItem([...todoItem].filter((item) => item.name !== name));
   };
 
   const handleUpdateCompleteStatus = (status, index) => {
-    const updateItemlist = [...groceryItems];
+    const updateItemlist = [...todoItem];
     updateItemlist[index].completed = status;
-    setGroceryItems(updateItemlist);
+    settodoItem(updateItemlist);
   };
 
-  const rendorgroceryList = () => {
-    return groceryItems.map((item, index) => (
+  const rendorTodoList = () => {
+    return todoItem.map((item, index) => (
       <li key={item.name}>
         <div className="container">
           <input
@@ -98,21 +98,21 @@ function App() {
     <main className="App">
       <div>
         <div>
-          {isCompleted && <h4 className="success">You Are Done</h4>}
+          {isCompleted && <h4 className="success"> Are Done</h4>}
           <div className="header">
             <h1>Shopping List</h1>
-            <img src={groceryimg} alt="" />
+            <img src={ToDoImage} alt="" />
             <input
               type="text"
-              placeholder="Add An Item"
+              placeholder="Add Task"
               className="item-input"
               onChange={handlechangeinputvalue}
-              onKeyDown={handleGroceryItems}
+              onKeyDown={handletodoItem}
               value={inputvalue}
             />
           </div>
         </div>
-        <ul>{rendorgroceryList()}</ul>
+        <ul>{rendorTodoList()}</ul>
       </div>
     </main>
   );
