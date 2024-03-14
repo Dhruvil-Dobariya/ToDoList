@@ -98,9 +98,9 @@ function App() {
     <main className="App">
       <div>
         <div>
-          {isCompleted && <h4 className="success"> Are Done</h4>}
           <div className="header">
             <h1>Shopping List</h1>
+            {isCompleted && <h4 className="success"> All Tasks Are Done</h4>}
             <img src={ToDoImage} alt="" />
             <input
               type="text"

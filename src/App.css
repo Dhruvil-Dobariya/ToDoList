@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-self: center;
-  background-color: #cacccc;
+  background-color: #e0ffff;
   align-items: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -17,8 +17,8 @@
 }
 
 input {
-  background-color: #dfdfdf;
-  border: 1px solid #ceb1b1;
+  background-color: #fff;
+  border: 1px solid #a0a7a9;
   border-radius: 5px;
   outline: none;
   padding: 5px 10px;
@@ -41,7 +41,7 @@ img {
 
 li {
   padding: 4px 10px;
-  margin: 3px;
+  margin: 4px;
   border-bottom: 1px solid rgba(74, 28, 28, 0.25);
   list-style: none;
   display: flex;
@@ -75,6 +75,7 @@ li p span {
   text-align: center;
   color: rgb(100, 180, 100);
   font-weight: 700;
+  font-size: 20px;
 }
 
 ul {
